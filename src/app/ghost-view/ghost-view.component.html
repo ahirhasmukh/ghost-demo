@@ -1,0 +1,33 @@
+<div class="loading-data">
+  <div class="animated-background">
+    <table
+      class="loader-table"
+      *ngIf="ghostType === 'table'"
+      [ngStyle]="ghostTheme"
+    >
+      <thead>
+        <tr>
+          <th
+            [ngStyle]="ghostTheme.th"
+            *ngFor="let column of ghostConfig.columns; let i = index"
+            [width]="ghostConfig.columnWidths[i] + '%'"
+          >
+            <span [ngStyle]="ghostTheme.th.span"></span>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of ghostConfig.rows">
+          <td
+            [ngStyle]="ghostTheme.td"
+            *ngFor="let column of ghostConfig.columns; let i = index"
+            [width]="ghostConfig.columnWidths[i] + '%'"
+          >
+            <span [ngStyle]="ghostTheme.td.span"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
