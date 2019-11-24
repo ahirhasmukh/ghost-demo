@@ -14,13 +14,19 @@ export class TableViewGhostModel {
 
 export class GhostViewComponent implements OnInit {
 
-  @Input() ghostType;
-  @Input() ghostConfig: TableViewGhostModel;
-  @Input() ghostTheme;
+  @Input() type;
+  @Input() config: TableViewGhostModel;
+  @Input() theme: any;
 
   constructor() {}
 
   ngOnInit() {
-   
+    if(!this.config) {
+      this.config = new TableViewGhostModel();
+    }
+
+    if(!this.theme) {
+      this.theme = {};
+    }
   }
 }

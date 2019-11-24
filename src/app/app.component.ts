@@ -1,40 +1,29 @@
 import { Component } from "@angular/core";
 
+export enum GHOST_VIEW_TYPE  {
+  TABLE = 1
+}
+
+export class TableViewGhostModel {
+  rows: number[];
+  columns: number[];
+  columnWidths: number[];
+
+  constructor(rowCount: number = 10, columnCount: number = 1, columnWidths: number[] = [100] ) {
+    this.rows = new Array(rowCount).fill('');
+    this.columns = new Array(columnCount).fill('');
+    this.columnWidths = columnWidths;
+  }
+}
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
-  type = "table";
-  config = {
-    columns: [
-      "Sr No",
-      "Name",
-      "Subject",
-      "Mobile Number",
-      "Description",
-      "status"
-    ],
-    columnWidths: [5, 15, 15, 15, 35, 15],
-    rows: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-  };
 
-  theme = {
-    "background-color": "lightblue",
-    padding: "10px",
-   
-    th: {
-      "background-color": "lightpink",
-      span: {
-        padding: "10px 0"
-      }
-    },
-    td: {
-      "background-color": "lightgray",
-      span: {
-        padding: "10px 0"
-      }
-    }
-  };
+export class AppComponent {
+  ghostViewType = GHOST_VIEW_TYPE;
+  ghostConfig = new TableViewGhostModel(10, 9, [5, 18, 17, 10, 10, 10, 10, 15, 5]);
+  ghostTheme = {};
 }
